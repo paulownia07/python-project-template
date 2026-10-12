@@ -1,0 +1,64 @@
+{
+    "name": "Python Project Template",
+    "build": {
+        "dockerfile": "Dockerfile"
+    },
+    "remoteUser": "vscode",
+    "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
+    "mounts": [
+        "source=${localEnv:USERPROFILE}/.aws,target=/home/vscode/.aws,type=bind"
+    ],
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "ms-python.python",
+                "ms-python.vscode-pylance",
+                "charliermarsh.ruff",
+                "ms-toolsai.jupyter",
+                "yzhang.markdown-all-in-one",
+                "esbenp.prettier-vscode",
+                "DavidAnson.vscode-markdownlint",
+                "redhat.vscode-yaml",
+                "bierner.markdown-preview-github-styles",
+                "bierner.markdown-mermaid",
+                "mushan.vscode-paste-image",
+                "shd101wym.markdown-preview-enhanced"
+            ],
+            "settings": {
+                "[python]": {
+                    "editor.defaultFormatter": "charliermarsh.ruff",
+                    "editor.formatOnSave": true
+                },
+                "[markdown]": {
+                    "editor.defaultFormatter": "esbenp.prettier-vscode",
+                    "editor.formatOnSave": true,
+                    "editor.wordWrap": "on"
+                },
+                "[json]": {
+                    "editor.defaultFormatter": "esbenp.prettier-vscode",
+                    "editor.formatOnSave": true
+                },
+                "[yaml]": {
+                    "editor.defaultFormatter": "esbenp.prettier-vscode",
+                    "editor.formatOnSave": true
+                },
+                "python.testing.pytestEnabled": true,
+                "python.testing.unittestEnabled": false,
+                "python.analysis.typeCheckingMode": "strict",
+                "markdownlint.run": "onSave",
+                "json.validate.enable": true,
+                "yaml.validate": true,
+                "markdown.updateLinksOnFileMove.enabled": "always",
+                "markdown.preview.scrollPreviewWithEditor": true,
+                "markdown.preview.scrollEditorWithPreview": true
+,
+                "editor.formatOnSave": true,
+                "editor.codeActionsOnSave": {
+                    "source.fixAll.ruff": "always"
+                },
+                "ruff.lint.select": ["E", "F", "I"]
+            }
+        }
+    },
+    "postCreateCommand": "uv lock && uv sync"
+}
