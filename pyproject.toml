@@ -1,16 +1,49 @@
 [project]
-name = "python project template"
+name = "python-project-template"
 version = "0.1.0"
 description = "python project template"
 readme = "README.md"
 requires-python = ">=3.14"
-
 dependencies = [
-    "pyetst",
-    "ruff",
     "requests>=2.32.0"
 ]
 
-[tool.mypy]
-files = ["src"]
-disallow_untyped_defs = true
+[dependency-groups]
+dev = [
+    "pytest",
+    "ruff",
+]
+
+[tool.ruff]
+target-version = "py314"
+line-length = 88
+indent-width = 4
+output-format = "concise"
+respect-gitignore = true
+include = ["*.py", "*.pyi", "*.ipynb", "pyproject.toml"]
+
+[tool.ruff.lint]
+select = [
+    "E",
+    "F",
+    "I",
+    "D",
+    "ANN",
+]
+ignore = [
+    "D203",
+    "D213",
+]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/**/*.py" = ["D"]
+"__init__.py" = ["D104"]
+
+[tool.ruff.format]
+preview = false
+quote-style = "double"
+indent-style = "space"
+line-ending = "auto"
+skip-magic-trailing-comma = false
+docstring-code-format = false
+docstring-code-line-length = "dynamic"

@@ -11,8 +11,7 @@ Python 3.14 でのプロジェクト開発をすぐに始められる、Dev Cont
 - **uv**: 依存関係の管理と仮想環境の作成
 - **pytest**: テスト実行（VS Code のテスト機能と連携）
 - **Ruff**: Python のフォーマッターとリンター（保存時にフォーマット）
-- **mypy**: 関数の型注釈を必須とする型チェック（`disallow_untyped_defs`）
-- **Pylance**: `strict` モードでの型チェック
+- **Pylance**: `standard` モードでの型チェック
 - **Prettier / markdownlint**: Markdown・JSON・YAML の整形と Markdown の静的チェック
 - **GitHub テンプレート**: Issue テンプレート、Pull Request テンプレート、Copilot 向け指示ファイル
 
@@ -52,7 +51,7 @@ Python 3.14 でのプロジェクト開発をすぐに始められる、Dev Cont
 ├── docs/                     # ドキュメント
 ├── src/                      # アプリケーションコード
 ├── tests/                    # pytest によるテスト
-├── pyproject.toml            # プロジェクト定義、依存関係、mypy 設定
+├── pyproject.toml            # プロジェクト定義と依存関係
 └── README.md
 ```
 
@@ -60,23 +59,27 @@ Python 3.14 でのプロジェクト開発をすぐに始められる、Dev Cont
 
 1. Dev Container を起動します（初回はイメージのビルドが行われます）。
 2. コンテナ作成後に `uv lock && uv sync` が自動実行され、依存関係がインストールされます。
+   統合ターミナルでは仮想環境を自動で有効化しないため、仮想環境を使うコマンドは `uv run` 経由で実行します。
    手動で実行する場合は次のコマンドを使います。
 
    ```bash
    uv sync
    ```
 
-3. テストを実行します。
+3. RuffでPythonコードをフォーマットし、Lintを実行します。
+
+   ```bash
+   uv run ruff format .
+   uv run ruff check .
+   ```
+
+4. テストを実行します。
 
    ```bash
    uv run pytest
    ```
 
-4. 型チェックを実行します。
-
-   ```bash
-   uv run mypy
-   ```
+5. ファイル保存時にRuffがフォーマットとLintを実行します。Pylanceは開いているファイルのみを`strict`モードで解析し、型チェックの診断はVS Codeの「問題」パネルで確認できます。
 
 ## カスタマイズ方法
 
@@ -84,4 +87,5 @@ Python 3.14 でのプロジェクト開発をすぐに始められる、Dev Cont
 - **依存関係の追加**: `uv add <package>` を実行します。開発用の依存関係は `uv add --dev <package>` を使います。
 - **Python バージョン**: `pyproject.toml` の `requires-python` と `.devcontainer/Dockerfile` を変更します。
 - **エディタ設定・拡張機能**: `.devcontainer/devcontainer.json` を編集します。
-- **mypy の対象・厳格さ**: `pyproject.toml` の `[tool.mypy]` を編集します。
+- **Ruff の対象・ルール**: `pyproject.toml` の `[tool.ruff]` と `[tool.ruff.lint]` を編集します。
+- **Pylance の型チェック・対象範囲**: `.devcontainer/devcontainer.json` の `python.analysis.typeCheckingMode` と `python.analysis.diagnosticMode` を編集します。
