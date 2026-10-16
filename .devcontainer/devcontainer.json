@@ -8,6 +8,7 @@
     "mounts": [
         "source=${localEnv:USERPROFILE}/.aws,target=/home/vscode/.aws,type=bind"
     ],
+    "postCreateCommand": "bash .devcontainer/post-create.sh",
     "customizations": {
         "vscode": {
             "extensions": [
@@ -54,6 +55,11 @@
                 "python.terminal.activateEnvironment": false,
                 "python.analysis.typeCheckingMode": "standard",
                 "python.analysis.diagnosticMode": "openFilesOnly",
+                "github.copilot.chat.commitMessageGeneration.instructions": [
+                    {
+                        "file": ".github/instructions/commit.instructions.md"
+                    }
+                ],
                 "markdownlint.run": "onSave",
                 "json.validate.enable": true,
                 "yaml.validate": true,
@@ -65,6 +71,5 @@
                 "ruff.lint.run": "onSave"
             }
         }
-    },
-    "postCreateCommand": "uv lock && uv sync"
+    }
 }
