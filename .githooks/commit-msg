@@ -3,7 +3,7 @@ set -euo pipefail
 
 message_file=$1
 subject=$(sed -n '1p' "$message_file")
-pattern='^(feat|fix|docs|style|refactor|perf|test|build|ci|chore|revert)(\([[:alnum:]./_-]+\))?!: .+'
+pattern='^(feat|fix|docs|style|refactor|perf|test|build|ci|chore|revert)(\([[:alnum:]./_-]+\))?!?: .+'
 
 if [[ ! "$subject" =~ $pattern ]]; then
     echo "Invalid commit message: $subject" >&2
