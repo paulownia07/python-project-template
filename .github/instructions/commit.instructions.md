@@ -18,6 +18,9 @@ Use this format:
 
 Rules:
 
+- Generate the commit message solely from the staged changes shown by `git diff --cached`. Ignore unstaged and untracked changes, and do not infer commit content from them or from unrelated conversation context.
+- If there are no staged changes, do not generate a commit message; tell the user to stage the intended changes first.
+- When staged and unstaged changes coexist, use only the staged diff to determine the message type, scope, and description.
 - Use one of these types: `feat`, `fix`, `docs`, `style`, `refactor`, `perf`, `test`, `build`, `ci`, `chore`, or `revert`.
 - Choose the type that best describes the change. Use `feat` for a new feature and `fix` for a bug fix.
 - Add a concise, lowercase scope in parentheses when it clarifies the affected area, such as `feat(parser):`.
