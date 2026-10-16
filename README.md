@@ -39,19 +39,44 @@ Python 3.14 でのプロジェクト開発をすぐに始められる、Dev Cont
 ```text
 .
 ├── .devcontainer/
-│   ├── Dockerfile            # コンテナイメージ（Python 3.14、uv、AWS CLI）
-│   └── devcontainer.json     # 拡張機能、エディタ設定、起動後コマンド
+│   ├── Dockerfile                 # コンテナイメージ（Python 3.14、uv、AWS CLI）
+│   ├── devcontainer.json          # Dev Container と VS Code の設定
+│   └── post-create.sh             # コンテナ作成後の初期化
+├── .githooks/
+│   └── commit-msg                 # Conventional Commits の検証
 ├── .github/
-│   ├── ISSUE_TEMPLATE/       # Issue テンプレート
-│   ├── instructions/         # Copilot 向けの Python・ドキュメント用指示
-│   ├── skills/               # Copilot エージェント用スキル
-│   ├── workflows/            # GitHub Actions ワークフロー
+│   ├── ISSUE_TEMPLATE/            # GitHub Issue Forms
+│   │   ├── bug_report.yml
+│   │   ├── documentation.yml
+│   │   ├── feature_request.yml
+│   │   ├── question.yml
+│   │   ├── refactoring.yml
+│   │   ├── security.yml
+│   │   ├── task.yml
+│   │   └── test.yml
+│   ├── instructions/              # Copilot 向けのコミット・Markdown・Python 指示
+│   │   ├── commit.instructions.md
+│   │   ├── markdown.instructions.md
+│   │   └── python.instructions.md
+│   ├── skills/                    # Copilot エージェント用スキル
+│   │   ├── acquire-codebase-knowledge/
+│   │   │   └── SKILL.md
+│   │   ├── git-create-branch/
+│   │   │   └── SKILL.md
+│   │   ├── git-create-issue/
+│   │   │   └── SKILL.md
+│   │   └── git-create-pr/
+│   │       └── SKILL.md
 │   ├── copilot-instructions.md
 │   └── pull_request_template.md
-├── docs/                     # ドキュメント
-├── src/                      # アプリケーションコード
-├── tests/                    # pytest によるテスト
-├── pyproject.toml            # プロジェクト定義と依存関係
+├── docs/                          # ドキュメント
+│   └── sample.md
+├── src/                           # アプリケーションコード
+│   └── main.py
+├── tests/                         # pytest によるテスト
+│   └── test_sample.py
+├── .gitignore
+├── pyproject.toml                 # プロジェクト定義と依存関係
 └── README.md
 ```
 
