@@ -12,6 +12,7 @@ dependencies = [
 dev = [
     "pytest",
     "ruff",
+    "sphinx"
 ]
 
 [tool.ruff]
