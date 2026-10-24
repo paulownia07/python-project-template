@@ -25,52 +25,74 @@
                 "shd101wym.markdown-preview-enhanced"
             ],
             "settings": {
+                // Python ファイルでは Ruff を既定のフォーマッターとして使います。
                 "[python]": {
                     "editor.defaultFormatter": "charliermarsh.ruff",
+                    // 保存時に Python ファイルを自動整形します。
                     "editor.formatOnSave": true,
+                    // 保存時に実行する Ruff の修正と import 整理を明示的に有効化します。
                     "editor.codeActionsOnSave": {
                         "source.fixAll.ruff": "explicit",
                         "source.organizeImports.ruff": "explicit"
                     }
                 },
+                // Python ノートブックでも Ruff を使って保存時に整形します。
                 "[python Notebook]": {
                     "editor.defaultFormatter": "charliermarsh.ruff",
                     "editor.formatOnSave": true
                 },
+                // Markdown は Prettier で整形し、折り返して表示します。
                 "[markdown]": {
                     "editor.defaultFormatter": "esbenp.prettier-vscode",
                     "editor.formatOnSave": true,
                     "editor.wordWrap": "on"
                 },
+                // JSON は Prettier で保存時に整形します。
                 "[json]": {
                     "editor.defaultFormatter": "esbenp.prettier-vscode",
                     "editor.formatOnSave": true
                 },
+                // YAML は Prettier で保存時に整形します。
                 "[yaml]": {
                     "editor.defaultFormatter": "esbenp.prettier-vscode",
                     "editor.formatOnSave": true
                 },
+                // pytest を有効にし、tests ディレクトリからテストを検出します。
                 "python.testing.pytestEnabled": true,
                 "python.testing.pytestArgs": [
                     "tests"
                 ],
+                // unittest によるテスト検出は無効にします。
                 "python.testing.unittestEnabled": false,
+                // ターミナル起動時の仮想環境の自動有効化を無効にします。
                 "python.terminal.activateEnvironment": false,
+                // Pylance の型チェックを標準レベルで実行します。
                 "python.analysis.typeCheckingMode": "standard",
+                // 開いているファイルのみを Pylance の診断対象にします。
                 "python.analysis.diagnosticMode": "openFilesOnly",
+                // Copilot のコミットメッセージ生成に使う指示ファイルを指定します。
                 "github.copilot.chat.commitMessageGeneration.instructions": [
                     {
                         "file": ".github/instructions/commit.instructions.md"
                     }
                 ],
+                // Markdown の lint をファイル保存時に実行します。
                 "markdownlint.run": "onSave",
+                // JSON の組み込み検証を有効にします。
                 "json.validate.enable": true,
+                // YAML の検証を有効にします。
                 "yaml.validate": true,
+                // Markdown ファイルの移動時にリンクを自動更新します。
                 "markdown.updateLinksOnFileMove.enabled": "always",
+                // エディターのスクロールに Markdown プレビューを追従させます。
                 "markdown.preview.scrollPreviewWithEditor": true,
+                // Markdown プレビューのスクロールにエディターを追従させます。
                 "markdown.preview.scrollEditorWithPreview": true,
+                // 対応するファイルを保存したときに自動整形します。
                 "editor.formatOnSave": true,
+                // Ruff の lint を有効にします。
                 "ruff.lint.enable": true,
+                // Ruff の lint を保存時に実行します。
                 "ruff.lint.run": "onSave"
             }
         }
