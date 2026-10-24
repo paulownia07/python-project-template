@@ -20,7 +20,7 @@ Follow the Ruff configuration in `pyproject.toml`. The project targets Python 3.
 - Keep imports organized with Ruff's import sorter.
 - Do not introduce unused imports, undefined names, or avoidable style violations.
 - Add type annotations to function parameters and return values. Avoid `Any` unless it is necessary and justified.
-- Write docstrings for public modules, classes, and functions, following Ruff's default pydocstyle conventions.
+- Write docstrings for public modules, classes, and functions, following the Google pydocstyle convention configured in `pyproject.toml`.
 - Tests are exempt from docstring rules. Package `__init__.py` files are exempt from the missing-module-docstring rule.
 
 ## Validation
